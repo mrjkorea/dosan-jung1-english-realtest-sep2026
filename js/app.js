@@ -171,8 +171,9 @@
     if (mistakes.length || partials.length) {
       html += '<h3 class="mistakes-heading">틀린 항목 · 부분 오답</h3><ul class="mistakes-ul">';
       for (const p of [...mistakes, ...partials.filter((x) => !mistakes.includes(x))]) {
+        const pts = p.max > 0 ? ` (${p.earned}/${p.max}점)` : "";
         html +=
-          `<li><strong>${esc(p.qNum)}번 ${esc(p.label)}</strong> (${p.earned}/${p.max}점)<br>` +
+          `<li><strong>${esc(p.qNum)}번 ${esc(p.label)}</strong>${pts}<br>` +
           `내 답: <em>${esc(p.student)}</em> → 정답: <strong>${esc(p.correct)}</strong><br>` +
           `<span class="explain-ko">${esc(p.explain)}</span></li>`;
       }
