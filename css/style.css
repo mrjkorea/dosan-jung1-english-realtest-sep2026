@@ -308,12 +308,160 @@ button#reset-btn {
 .score-banner {
   background: var(--accent);
   color: #fff;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.25rem;
   border-radius: var(--radius);
-  font-size: 1.1rem;
-  font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
+}
+
+.score-banner .score-main {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.score-banner .score-percent {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  opacity: 0.95;
+}
+
+.score-banner .score-sub {
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-top: 0.65rem;
+  opacity: 0.9;
+}
+
+.results-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.results-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.breakdown-table th,
+.breakdown-table td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.5rem;
+  text-align: center;
+}
+
+.breakdown-table th {
+  background: var(--accent-soft);
+}
+
+.breakdown-table tr.row-full td:first-child {
+  font-weight: 600;
+}
+
+.breakdown-table tr.row-zero {
+  background: var(--bad-bg);
+}
+
+.breakdown-table tr.row-part {
+  background: var(--warn-bg);
+}
+
+.mistakes-heading {
+  font-size: 0.95rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--ink);
+}
+
+.mistakes-heading:first-child {
+  margin-top: 0;
+}
+
+.mistakes-ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.mistakes-ul li {
+  margin-bottom: 0.85rem;
+}
+
+.mistakes-ul em {
+  color: var(--bad);
+  font-style: normal;
+}
+
+.no-mistakes {
+  margin: 0;
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.results-hint {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.explain-ko {
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.tip-ko {
+  color: var(--warn);
+  font-size: 0.88rem;
+  margin-top: 0.35rem;
+}
+
+.feedback .explain-ko,
+.feedback .tip-ko,
+.feedback .mistake-inline p {
+  color: var(--ink);
+}
+
+.explain-toggle {
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.explain-toggle summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.result-line {
+  margin: 0.35rem 0;
+  font-weight: 600;
+}
+
+.partial-tag {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.mistake-inline {
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px dashed var(--border);
+}
+
+.mistake-inline:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
 .feedback {

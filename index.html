@@ -427,7 +427,15 @@
 
     <div id="results" aria-live="polite">
       <div class="score-banner" id="score-banner"></div>
-      <p class="meta" style="text-align:center">제출 후 각 문항 아래에 정답과 해설이 표시됩니다.</p>
+      <section class="results-panel">
+        <h2 class="results-title">문항별 점수</h2>
+        <div id="score-breakdown"></div>
+      </section>
+      <section class="results-panel mistakes-panel">
+        <h2 class="results-title">오답 노트 (내 답 vs 정답 + 해설)</h2>
+        <div id="mistakes-list"></div>
+      </section>
+      <p class="meta results-hint">각 문항 입력란 아래에도 맞힌 경우 <strong>해설 보기</strong>, 틀린 경우 정답과 한국어 해설이 표시됩니다.</p>
     </div>
 
     <footer class="site-footer">
@@ -436,6 +444,7 @@
   </div>
 
   <script src="js/scoring.js"></script>
+  <script src="js/explanations-ko.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
