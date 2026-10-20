@@ -98,15 +98,15 @@
 
     if (p.ok) {
       return (
-        `<p class="result-line ok-line">✓ ${esc(p.label)} (${p.earned}/${p.max}점)</p>` +
+        `<p class="result-line ok-line">✓ ${esc(p.label)} (${p.earned}/${p.max}점 · ${pctOf(p.earned, p.max)}%)</p>` +
         `<details class="explain-toggle"><summary>해설 보기</summary><p>${esc(p.explain)}</p></details>`
       );
     }
 
-    const partialNote = p.partial ? ` <span class="partial-tag">부분 점수 ${p.earned}/${p.max}점</span>` : "";
+    const partialNote = p.partial ? ` <span class="partial-tag">부분 점수 ${p.earned}/${p.max}점 (${pctOf(p.earned, p.max)}%)</span>` : "";
     return (
       `<div class="mistake-inline">` +
-      `<p class="result-line bad-line">✗ ${esc(p.label)}${partialNote} (${p.earned}/${p.max}점)</p>` +
+      `<p class="result-line bad-line">✗ ${esc(p.label)}${partialNote} (${p.earned}/${p.max}점 · ${pctOf(p.earned, p.max)}%)</p>` +
       `<p><strong>내 답:</strong> ${esc(p.student)}</p>` +
       `<p><strong>정답:</strong> ${esc(p.correct)}</p>` +
       `<p class="explain-ko"><strong>해설:</strong> ${esc(p.explain)}</p>` +
@@ -130,6 +130,9 @@
     }
   }
 
+  // Display only: whole-number percent next to a score.
+  function pctOf(e, m) { return m ? Math.round((e / m) * 100) : 0; }
+
   function renderSummary(earnedObjective, maxObjective, openEarned, openMax) {
     const totalEarned = earnedObjective + openEarned;
     const totalMax = maxObjective + openMax;
@@ -137,7 +140,7 @@
     scoreBanner.innerHTML =
       `<div class="score-main">${totalEarned} / ${totalMax} 점</div>` +
       `<div class="score-percent">${pct}%</div>` +
-      `<div class="score-sub">객관식·빈칸 ${earnedObjective} / ${maxObjective}점 · 서술형 연습 ${openEarned} / ${openMax}점</div>`;
+      `<div class="score-sub">객관식·빈칸 ${earnedObjective} / ${maxObjective}점 (${pctOf(earnedObjective, maxObjective)}%) · 서술형 연습 ${openEarned} / ${openMax}점 (${pctOf(openEarned, openMax)}%)</div>`;
   }
 
   function renderBreakdown() {
@@ -171,7 +174,7 @@
     if (mistakes.length || partials.length) {
       html += '<h3 class="mistakes-heading">틀린 항목 · 부분 오답</h3><ul class="mistakes-ul">';
       for (const p of [...mistakes, ...partials.filter((x) => !mistakes.includes(x))]) {
-        const pts = p.max > 0 ? ` (${p.earned}/${p.max}점)` : "";
+        const pts = p.max > 0 ? ` (${p.earned}/${p.max}점 · ${pctOf(p.earned, p.max)}%)` : "";
         html +=
           `<li><strong>${esc(p.qNum)}번 ${esc(p.label)}</strong>${pts}<br>` +
           `내 답: <em>${esc(p.student)}</em> → 정답: <strong>${esc(p.correct)}</strong><br>` +
